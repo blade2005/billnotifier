@@ -20,7 +20,7 @@ except ImportError:
     # Python 2.4 (CentOS 5.x)
     from email.MIMEText import MIMEText
 
-notify_day = calendar.THURSDAY
+NOTIFY_DAY = calendar.THURSDAY
 ###############################################################################
 ######################## DO NOT MODIFY BELOW THIS LINE ########################
 ###############################################################################
@@ -43,9 +43,13 @@ def get_notifications(bills):
     dayofmonth = curtime.day
     daysinmonth = calendar.monthrange(curtime.year, curtime.month)[1]
     week_bills = []
-    if calendar.weekday(curtime.year, curtime.month, curtime.day) == notify_day:
+    if calendar.weekday(
+        curtime.year,
+        curtime.month,
+        curtime.day
+    ) == NOTIFY_DAY:
         print "Today is %s. Sending emails" % (
-            calendar.day_name[notify_day]
+            calendar.day_name[NOTIFY_DAY]
         )
         for bill in sorted(bills, key=lambda k: k['duedate']):
             if (
@@ -58,7 +62,7 @@ def get_notifications(bills):
                 week_bills.append(bill)
     else:
         print "Today is not %s. No emails will be sent" % (
-            calendar.day_name[notify_day]
+            calendar.day_name[NOTIFY_DAY]
         )
     return week_bills
 
