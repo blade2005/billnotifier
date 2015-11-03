@@ -27,3 +27,5 @@ mintaccountid = mint_account_id
 ```
 
 You can get the mint account id from running mintapi from the commandline and looking through the output for the account you want. Alternatively you can run accountprint.py after setting up your config file
+
+Also you will want to modify the source code slightly to update what day you want to be emailed. This is on line 23
